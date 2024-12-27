@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gordon-scheduler-test
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: test
+  template:
+    metadata:
+      labels:
+        app: test
+    spec:
+      schedulerName: gordon-scheduler
+      containers:
+        - image: inf-repo-registry.cn-wulanchabu.cr.aliyuncs.com/infly-dev/ubuntu:latest
+          name: nginx
+          command: ["sleep"]
+          args: ["99999"]
